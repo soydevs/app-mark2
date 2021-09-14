@@ -12,10 +12,14 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
+import Toast from 'react-native-simple-toast';
+
+// http://soydevs-backend.herokuapp.com/
 
 const SignUpScreen = ({navigation}) => {
   const signUpSchema = yup.object({
-    userName: yup.string().required().min(4),
+    username: yup.string().required().min(4),
     name: yup.string().required().min(4),
     password: yup.string().required().min(6),
     phone: yup.number().required(),
@@ -37,11 +41,24 @@ const SignUpScreen = ({navigation}) => {
     outputRange: ['0deg', '360deg'],
   });
 
-  const handleSubmit = (values: any) => {
-    console.log('hi');
+  const handleSubmit = async (values: any) => {
     Keyboard.dismiss();
     console.log(values);
-    navigation.navigate('HomeStack');
+    try {
+      const uri = 'http://soydevs-backend.herokuapp.com' + '/auth/signup';
+      const resp = await axios.post(uri, values);
+      console.log(resp);
+      console.log(resp.data);
+      if (resp.data?.success) {
+        navigation.navigate('HomeStack');
+      }
+    } catch (err) {
+      console.log(err);
+      Toast.show(
+        'There seem to be some error at this moment in signing up. Please try again after some time',
+      );
+      console.log('Error in signup: ' + err);
+    }
   };
 
   return (
@@ -55,7 +72,7 @@ const SignUpScreen = ({navigation}) => {
       }}>
       <Formik
         initialValues={{
-          userName: 'jonyboi',
+          username: 'jonyboi',
           name: 'John Doe',
           password: '12345678',
           phone: '987654337',
@@ -74,19 +91,19 @@ const SignUpScreen = ({navigation}) => {
               }}
             />
             <View style={styles.inputContainer}>
-              <Text>Username</Text>
+              <Text>username</Text>
               <TextInput
                 placeholder="John Doe"
                 placeholderTextColor="grey"
                 style={styles.textInput}
                 autoCapitalize="none"
-                onChangeText={props.handleChange('userName')}
-                onBlur={props.handleBlur('userName')}
-                value={props.values.userName}
+                onChangeText={props.handleChange('username')}
+                onBlur={props.handleBlur('username')}
+                value={props.values.username}
               />
             </View>
             <Text style={styles.toastMsg}>
-              {props.touched.userName && props.errors.userName}
+              {props.touched.username && props.errors.username}
             </Text>
             <View style={styles.inputContainer}>
               <Text>Name</Text>
