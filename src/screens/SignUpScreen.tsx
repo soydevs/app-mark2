@@ -1,24 +1,19 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-undef */
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
   TouchableHighlight,
-  Image,
-  ActivityIndicator,
-  TouchableOpacity,
   Keyboard,
-  ImageBackground,
   Animated,
   Easing,
 } from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
   const signUpSchema = yup.object({
     userName: yup.string().required().min(4),
     name: yup.string().required().min(4),
@@ -31,12 +26,12 @@ const SignUpScreen = () => {
   Animated.loop(
     Animated.timing(spinValueRef.current, {
       toValue: 1,
-      duration: 6000,
+      duration: 12000,
       useNativeDriver: true, // To make use of native driver for performance
+      easing: Easing.linear,
     }),
   ).start();
 
-  // Next, interpolate beginning and end values (in this case 0 and 1)
   const spin = spinValueRef.current.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg'],
@@ -46,6 +41,7 @@ const SignUpScreen = () => {
     console.log('hi');
     Keyboard.dismiss();
     console.log(values);
+    navigation.navigate('HomeStack');
   };
 
   return (
@@ -59,10 +55,10 @@ const SignUpScreen = () => {
       }}>
       <Formik
         initialValues={{
-          password: '',
-          userName: '',
-          phone: '',
-          name: '',
+          userName: 'jonyboi',
+          name: 'John Doe',
+          password: '12345678',
+          phone: '987654337',
         }}
         validationSchema={signUpSchema}
         onSubmit={handleSubmit}>
@@ -145,6 +141,17 @@ const SignUpScreen = () => {
               }}
               onPress={props.handleSubmit}>
               <Text style={{color: 'white'}}>Sign Up</Text>
+            </TouchableHighlight>
+
+            <Text>Already have an account?</Text>
+            <TouchableHighlight
+              style={{
+                backgroundColor: 'grey',
+                padding: 20,
+                marginTop: 25,
+              }}
+              onPress={() => navigation.navigate('SignIn')}>
+              <Text style={{color: 'white'}}>Sign In</Text>
             </TouchableHighlight>
           </>
         )}

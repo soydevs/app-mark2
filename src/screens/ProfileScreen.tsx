@@ -3,14 +3,14 @@ import {StyleSheet, Text, View} from 'react-native';
 
 interface Props {}
 
-const SignIn = (props: Props) => {
+const ProfileScreen = (props: Props) => {
   return (
     <View>
-      <Text>Sign In</Text>
+      <Text>Profile Screen</Text>
     </View>
   );
 };
 
-export default SignIn;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({});

@@ -1,19 +1,18 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView} from 'react-native';
-import SignIn from './screens/SignIn';
-import SignUpScreen from './screens/SignUpScreen';
+import {SafeAreaView} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import AppNavigator from './routes/AppNavigator';
 
 interface Props {}
 
 const App = (props: Props) => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <SignUpScreen />
-      {/* <SignIn /> */}
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
     </SafeAreaView>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({});
