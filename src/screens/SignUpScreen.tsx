@@ -14,6 +14,7 @@ import {Formik} from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import Toast from 'react-native-simple-toast';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 // http://soydevs-backend.herokuapp.com/
 
@@ -62,118 +63,120 @@ const SignUpScreen = ({navigation}) => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        height: '100%',
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <Formik
-        initialValues={{
-          username: 'jonyboi',
-          name: 'John Doe',
-          password: '12345678',
-          phone: '987654337',
-        }}
-        validationSchema={signUpSchema}
-        onSubmit={handleSubmit}>
-        {props => (
-          <>
-            <Animated.Image
-              resizeMode="cover"
-              source={require('../assets/globe.png')}
-              style={{
-                transform: [{rotate: spin}],
-                position: 'absolute',
-                top: 70,
-              }}
-            />
-            <View style={styles.inputContainer}>
-              <Text>username</Text>
-              <TextInput
-                placeholder="John Doe"
-                placeholderTextColor="grey"
-                style={styles.textInput}
-                autoCapitalize="none"
-                onChangeText={props.handleChange('username')}
-                onBlur={props.handleBlur('username')}
-                value={props.values.username}
+    <KeyboardAwareScrollView>
+      <View
+        style={{
+          flex: 1,
+          // height: '100%',
+          backgroundColor: 'white',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Formik
+          initialValues={{
+            username: 'jonyboi',
+            name: 'John Doe',
+            password: '12345678',
+            phone: '987654337',
+          }}
+          validationSchema={signUpSchema}
+          onSubmit={handleSubmit}>
+          {props => (
+            <>
+              <Animated.Image
+                resizeMode="cover"
+                source={require('../assets/globe.png')}
+                style={{
+                  transform: [{rotate: spin}],
+                  position: 'absolute',
+                  top: 70,
+                }}
               />
-            </View>
-            <Text style={styles.toastMsg}>
-              {props.touched.username && props.errors.username}
-            </Text>
-            <View style={styles.inputContainer}>
-              <Text>Name</Text>
-              <TextInput
-                placeholder="John Doe"
-                placeholderTextColor="grey"
-                style={styles.textInput}
-                onChangeText={props.handleChange('name')}
-                onBlur={props.handleBlur('name')}
-                value={props.values.name}
-              />
-            </View>
-            <Text style={styles.toastMsg}>
-              {props.touched.name && props.errors.name}
-            </Text>
-            <View style={styles.inputContainer}>
-              <Text>Phone</Text>
-              <TextInput
-                placeholder="+9878782341"
-                placeholderTextColor="grey"
-                style={styles.textInput}
-                autoCapitalize="none"
-                onChangeText={props.handleChange('phone')}
-                onBlur={props.handleBlur('phone')}
-                value={props.values.phone}
-              />
-            </View>
-            <Text style={styles.toastMsg}>
-              {props.touched.phone && props.errors.phone}
-            </Text>
-            <View style={styles.inputContainer}>
-              <Text>Password</Text>
-              <TextInput
-                placeholderTextColor="grey"
-                style={styles.textInput}
-                autoCapitalize="none"
-                onChangeText={props.handleChange('password')}
-                onBlur={props.handleBlur('password')}
-                value={props.values.password}
-                secureTextEntry
-              />
-            </View>
-            <Text style={styles.toastMsg}>
-              {props.touched.password && props.errors.password}
-            </Text>
+              <View style={styles.inputContainer}>
+                <Text>username</Text>
+                <TextInput
+                  placeholder="John Doe"
+                  placeholderTextColor="grey"
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                  onChangeText={props.handleChange('username')}
+                  onBlur={props.handleBlur('username')}
+                  value={props.values.username}
+                />
+              </View>
+              <Text style={styles.toastMsg}>
+                {props.touched.username && props.errors.username}
+              </Text>
+              <View style={styles.inputContainer}>
+                <Text>Name</Text>
+                <TextInput
+                  placeholder="John Doe"
+                  placeholderTextColor="grey"
+                  style={styles.textInput}
+                  onChangeText={props.handleChange('name')}
+                  onBlur={props.handleBlur('name')}
+                  value={props.values.name}
+                />
+              </View>
+              <Text style={styles.toastMsg}>
+                {props.touched.name && props.errors.name}
+              </Text>
+              <View style={styles.inputContainer}>
+                <Text>Phone</Text>
+                <TextInput
+                  placeholder="+9878782341"
+                  placeholderTextColor="grey"
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                  onChangeText={props.handleChange('phone')}
+                  onBlur={props.handleBlur('phone')}
+                  value={props.values.phone}
+                />
+              </View>
+              <Text style={styles.toastMsg}>
+                {props.touched.phone && props.errors.phone}
+              </Text>
+              <View style={styles.inputContainer}>
+                <Text>Password</Text>
+                <TextInput
+                  placeholderTextColor="grey"
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                  onChangeText={props.handleChange('password')}
+                  onBlur={props.handleBlur('password')}
+                  value={props.values.password}
+                  secureTextEntry
+                />
+              </View>
+              <Text style={styles.toastMsg}>
+                {props.touched.password && props.errors.password}
+              </Text>
 
-            <TouchableHighlight
-              style={{
-                backgroundColor: 'blue',
-                padding: 20,
-                marginTop: 25,
-              }}
-              onPress={props.handleSubmit}>
-              <Text style={{color: 'white'}}>Sign Up</Text>
-            </TouchableHighlight>
+              <TouchableHighlight
+                style={{
+                  backgroundColor: 'blue',
+                  padding: 20,
+                  marginTop: 25,
+                }}
+                onPress={props.handleSubmit}>
+                <Text style={{color: 'white'}}>Sign Up</Text>
+              </TouchableHighlight>
 
-            <Text>Already have an account?</Text>
-            <TouchableHighlight
-              style={{
-                backgroundColor: 'grey',
-                padding: 20,
-                marginTop: 25,
-              }}
-              onPress={() => navigation.navigate('SignIn')}>
-              <Text style={{color: 'white'}}>Sign In</Text>
-            </TouchableHighlight>
-          </>
-        )}
-      </Formik>
-    </View>
+              <Text>Already have an account?</Text>
+              <TouchableHighlight
+                style={{
+                  backgroundColor: 'grey',
+                  padding: 20,
+                  marginTop: 25,
+                }}
+                onPress={() => navigation.navigate('SignIn')}>
+                <Text style={{color: 'white'}}>Sign In</Text>
+              </TouchableHighlight>
+            </>
+          )}
+        </Formik>
+      </View>
+    </KeyboardAwareScrollView>
   );
 };
 
