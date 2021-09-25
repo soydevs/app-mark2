@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Image, Text, View} from 'react-native';
 import {useAppSelector} from '../hooks/reduxHooks';
+import {toTitleCase} from '../utils';
 
 interface Props {
   place: {name: string; category: string; imgUrl: string};
@@ -13,7 +14,7 @@ const PlaceCard = ({place}: Props) => {
     <View style={{marginHorizontal: 5}}>
       <Image style={{height: 100, width: 100}} source={imgUrl} />
       <Text style={{color: colors.secondary, fontWeight: 'bold'}}>{name}</Text>
-      <Text style={{color: colors.tertiary}}>{category}</Text>
+      <Text style={{color: colors.tertiary}}>{toTitleCase(category)}</Text>
     </View>
   );
 };

@@ -20,11 +20,12 @@ const SearchBar = (props: Props) => {
         borderWidth: 1,
         borderColor: 'grey',
         borderRadius: 250,
-        width: '85%',
+        width: '90%',
         paddingHorizontal: 25,
         shadowColor: 'black',
         justifyContent: 'space-between',
         alignItems: 'center',
+        alignSelf: 'center',
       }}>
       <TextInput
         placeholder="Search for a place of your choice"
@@ -35,7 +36,6 @@ const SearchBar = (props: Props) => {
         onChangeText={text => setSearchQuery(text)}
       />
       <MaterialIcons
-        // style={{marginRight: 20}}
         color={colors.secondary}
         name="search"
         size={23}
