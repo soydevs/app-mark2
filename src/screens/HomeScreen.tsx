@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import PlaceCard from '../components/PlaceCard';
 import SearchBar from '../components/SearchBar';
-import globalStyles, {primaryColor} from '../global/globalStyles';
+import globalStyles from '../global/globalStyles';
 import {useAppSelector} from '../hooks/reduxHooks';
 
 interface Props {}

@@ -7,13 +7,11 @@ import thunk from 'redux-thunk';
 import rootReducer from './redux/reducers/rootReducer';
 import {Provider} from 'react-redux';
 
-interface Props {}
-
 const store = createStore(rootReducer, applyMiddleware(thunk));
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-const App = (props: Props) => {
+const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <Provider store={store}>
