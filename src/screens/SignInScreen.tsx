@@ -17,6 +17,7 @@ import Toast from 'react-native-simple-toast';
 import {useDispatch} from 'react-redux';
 import {apiDispatch} from '../utils';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {Dimensions} from 'react-native';
 
 const SignInScreen = ({navigation}) => {
   const signInSchema = yup.object({
@@ -43,6 +44,7 @@ const SignInScreen = ({navigation}) => {
 
   const handleSubmit = async (values: any) => {
     Keyboard.dismiss();
+    Toast.show('Logging you in');
     try {
       const uri = 'http://soydevs-backend.herokuapp.com' + '/auth/login';
       const resp = await axios.post(uri, values);
@@ -65,8 +67,7 @@ const SignInScreen = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          height: '100%',
-          backgroundColor: 'white',
+          height: Dimensions.get('window').height,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -83,7 +84,7 @@ const SignInScreen = ({navigation}) => {
                 resizeMode="cover"
                 source={require('../assets/globe.png')}
                 style={{
-                  transform: [{rotate: spin}],
+                  // transform: [{rotate: spin}],
                   position: 'absolute',
                   top: 70,
                 }}

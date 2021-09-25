@@ -9,6 +9,7 @@ import {
   Keyboard,
   Animated,
   Easing,
+  Dimensions,
 } from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
@@ -45,6 +46,7 @@ const SignUpScreen = ({navigation}) => {
   const handleSubmit = async (values: any) => {
     Keyboard.dismiss();
     console.log(values);
+    Toast.show('Hold tight, Siging you up.');
     try {
       const uri = 'http://soydevs-backend.herokuapp.com' + '/auth/signup';
       const resp = await axios.post(uri, values);
@@ -67,7 +69,7 @@ const SignUpScreen = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          // height: '100%',
+          height: Dimensions.get('window').height,
           backgroundColor: 'white',
           justifyContent: 'center',
           alignItems: 'center',
