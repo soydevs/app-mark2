@@ -36,23 +36,24 @@ const samplePlaces = [
 
 const HomeScreen = (props: Props) => {
   const user = useAppSelector(state => state.auth.user);
+  const colors = useAppSelector(state => state.theme.colors);
   console.log({user});
   return (
-    <ScrollView contentContainerStyle={{flex: 1, alignItems: 'center'}}>
-      {/* <View style={{flex: 1, alignItems: 'center'}}> */}
+    <ScrollView contentContainerStyle={{flex: 1, paddingHorizontal: 10}}>
       <Text>Hello {user.name},</Text>
-      <Text style={{fontSize: 30, color: primaryColor}}>
+      <Text style={{fontSize: 30, color: colors.primary}}>
         Where do you wanna go today??😁
       </Text>
       <SearchBar />
-      <Text style={{fontSize: 20}}>Trending Places</Text>
+      <Text style={{fontSize: 20, marginTop: 20, marginBottom: 5}}>
+        Trending Places
+      </Text>
       <FlatList
         nestedScrollEnabled
         data={samplePlaces}
         renderItem={({item}) => <PlaceCard place={item} />}
         horizontal
       />
-      {/* </View> */}
     </ScrollView>
   );
 };
