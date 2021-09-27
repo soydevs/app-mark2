@@ -1,6 +1,7 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import {Provider as PaperProvider} from 'react-native-paper';
 import AppNavigator from './routes/AppNavigator';
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
@@ -15,9 +16,11 @@ const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <Provider store={store}>
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
+        <PaperProvider>
+          <NavigationContainer>
+            <AppNavigator />
+          </NavigationContainer>
+        </PaperProvider>
       </Provider>
     </SafeAreaView>
   );

@@ -6,6 +6,7 @@ import SignUpScreen from '../screens/SignUpScreen';
 import SignInScreen from '../screens/SignInScreen';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import PlaceScreen from '../screens/PlaceScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -59,6 +60,17 @@ const AppNavigator = () => {
         name="SignUp"
         component={SignUpScreen}
         options={{headerShown: true, title: 'Sign Up'}}
+      />
+      <Stack.Screen
+        name="Place"
+        component={PlaceScreen}
+        options={({route}) => ({
+          headerShown: true,
+          title: route.params?.name || '',
+          headerRight: () => (
+            <MaterialIcons color="orange" name="favorite-outline" size={23} />
+          ),
+        })}
       />
     </Stack.Navigator>
   );

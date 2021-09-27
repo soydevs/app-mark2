@@ -18,6 +18,7 @@ import {useDispatch} from 'react-redux';
 import {apiDispatch} from '../utils';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Dimensions} from 'react-native';
+import globalStyles from '../global/globalStyles';
 
 const SignInScreen = ({navigation}) => {
   const signInSchema = yup.object({
@@ -94,7 +95,7 @@ const SignInScreen = ({navigation}) => {
                 <TextInput
                   placeholder="John Doe"
                   placeholderTextColor="grey"
-                  style={styles.textInput}
+                  style={globalStyles.textInput}
                   autoCapitalize="none"
                   onChangeText={props.handleChange('username')}
                   onBlur={props.handleBlur('username')}
@@ -108,7 +109,7 @@ const SignInScreen = ({navigation}) => {
                 <Text>Password</Text>
                 <TextInput
                   placeholderTextColor="grey"
-                  style={styles.textInput}
+                  style={globalStyles.textInput}
                   autoCapitalize="none"
                   onChangeText={props.handleChange('password')}
                   onBlur={props.handleBlur('password')}
@@ -153,63 +154,13 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   inputContainer: {
     borderColor: 'grey',
-    borderWidth: 1,
+    // borderWidth: 1,
     // backgroundColor: 'red',
     width: '80%',
     marginTop: 5,
-  },
-  textInput: {
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderRadius: 250,
-    // backgroundColor: 'blue',
-    color: 'black',
-    paddingHorizontal: 20,
   },
   toastMsg: {
     color: 'red',
     marginBottom: 5,
   },
 });
-
-// import React from 'react';
-// import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
-
-// interface Props {}
-
-// const SignInScreen = (props: Props) => {
-//   const {navigation} = props;
-//   return (
-//     <View
-//       style={{
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: '#bbb',
-//       }}>
-//       <TouchableHighlight
-//         style={{
-//           backgroundColor: 'grey',
-//           padding: 20,
-//           marginTop: 25,
-//         }}
-//         onPress={() => navigation.navigate('HomeStack')}>
-//         <Text style={{color: 'white'}}>Sign In</Text>
-//       </TouchableHighlight>
-//       <Text> New User?</Text>
-//       <TouchableHighlight
-//         style={{
-//           backgroundColor: 'grey',
-//           padding: 20,
-//           marginTop: 25,
-//         }}
-//         onPress={() => navigation.navigate('SignUp')}>
-//         <Text style={{color: 'white'}}>Sign Up</Text>
-//       </TouchableHighlight>
-//     </View>
-//   );
-// };
-
-// export default SignInScreen;
-
-// const styles = StyleSheet.create({});

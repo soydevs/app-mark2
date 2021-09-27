@@ -5,6 +5,14 @@ const globalStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+  textInput: {
+    borderColor: 'grey',
+    borderWidth: 1,
+    borderRadius: 250,
+    color: 'black',
+    paddingHorizontal: 20,
   },
 });
 

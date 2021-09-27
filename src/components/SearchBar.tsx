@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
@@ -8,9 +9,10 @@ interface Props {}
 
 const SearchBar = (props: Props) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const navigation = useNavigation();
   const colors = useAppSelector(state => state.theme.colors);
   const handleSubmit = () => {
-    console.log({searchQuery});
+    navigation.navigate('Place', {name: searchQuery});
   };
   return (
     <View

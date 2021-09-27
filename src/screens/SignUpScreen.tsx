@@ -16,8 +16,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import Toast from 'react-native-simple-toast';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-
-// http://soydevs-backend.herokuapp.com/
+import globalStyles from '../global/globalStyles';
 
 const SignUpScreen = ({navigation}) => {
   const signUpSchema = yup.object({
@@ -99,7 +98,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   placeholder="John Doe"
                   placeholderTextColor="grey"
-                  style={styles.textInput}
+                  style={globalStyles.textInput}
                   autoCapitalize="none"
                   onChangeText={props.handleChange('username')}
                   onBlur={props.handleBlur('username')}
@@ -114,7 +113,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   placeholder="John Doe"
                   placeholderTextColor="grey"
-                  style={styles.textInput}
+                  style={globalStyles.textInput}
                   onChangeText={props.handleChange('name')}
                   onBlur={props.handleBlur('name')}
                   value={props.values.name}
@@ -128,7 +127,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   placeholder="+9878782341"
                   placeholderTextColor="grey"
-                  style={styles.textInput}
+                  style={globalStyles.textInput}
                   autoCapitalize="none"
                   onChangeText={props.handleChange('phone')}
                   onBlur={props.handleBlur('phone')}
@@ -142,7 +141,7 @@ const SignUpScreen = ({navigation}) => {
                 <Text>Password</Text>
                 <TextInput
                   placeholderTextColor="grey"
-                  style={styles.textInput}
+                  style={globalStyles.textInput}
                   autoCapitalize="none"
                   onChangeText={props.handleChange('password')}
                   onBlur={props.handleBlur('password')}
@@ -191,14 +190,6 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     width: '80%',
     marginTop: 5,
-  },
-  textInput: {
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderRadius: 250,
-    // backgroundColor: 'blue',
-    color: 'black',
-    paddingHorizontal: 20,
   },
   toastMsg: {
     color: 'red',
